@@ -17,8 +17,8 @@ CREATE WAREHOUSE IF NOT EXISTS sales_warehouse;
 CREATE SCHEMA new_sales_schema;
 
 CREATE OR REPLACE STAGE sales_database.new_sales_schema.snowflake_ext_stage_yml url="s3://airflow-aws-snow/"
-credentials=(aws_key_id='AKIAT3WHZJRC5565VKVV'
-aws_secret_key='HpxdCdIbe417wCAKJ6KKG4jXnBn/kwU7bc4IN2yj');
+credentials=(aws_key_id='***'
+aws_secret_key='***');
 
 list @sales_database.new_sales_schema.snowflake_ext_stage_yml;
 
