@@ -1,0 +1,1 @@
+Automate a data pipeline to load data from amazon S3 bucket into a snowflake table and sending out an email notification to stakeholders when the data gets loaded in the snowflake table using airflow running in an AWS EC2 instance. 
