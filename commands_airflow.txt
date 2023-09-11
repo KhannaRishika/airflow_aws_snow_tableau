@@ -1,0 +1,41 @@
+sudo apt update
+sudo apt install python3-pip
+sudo apt install python3.10-venv
+python3 -m venv airflow_snow_venv
+source airflow_snow_venv/bin/activate
+sudo pip install apache-airflow
+pip install apache-airflow-providers-snowflake
+pip install snowflake-connector-python
+pip install snowflake-sqlalchemy
+pip install apache-airflow-providers-amazon
+
+airflow standalone
+
+DROP DATABASE IF EXISTS sales_database;
+CREATE DATABASE IF NOT EXISTS sales_database;
+CREATE WAREHOUSE IF NOT EXISTS sales_warehouse;
+CREATE SCHEMA new_sales_schema;
+
+CREATE OR REPLACE STAGE sales_database.new_sales_schema.snowflake_ext_stage_yml url="s3://airflow-aws-snow/"
+credentials=(aws_key_id='AKIAT3WHZJRC5565VKVV'
+aws_secret_key='HpxdCdIbe417wCAKJ6KKG4jXnBn/kwU7bc4IN2yj');
+
+list @sales_database.new_sales_schema.snowflake_ext_stage_yml;
+
+CREATE OR REPLACE FILE FORMAT csv_format
+ TYPE = 'CSV'
+ FIELD_DELIMITER = ','
+ RECORD_DELIMITER = '\n'
+ SKIP_HEADER = 1;
+ 
+ 
+ 
+ ssh -i "airflow_aws_snow.pem" ubuntu@ec2-3-110-182-119.ap-south-1.compute.amazonaws.com
+ 
+ http://ec2-3-110-182-119.ap-south-1.compute.amazonaws.com:8080
+ 
+ 
+ C:\Users\khann\.ssh
+ 
+ launch ec2> launch ubuntu on aws > install dependencies > launch Airflow instance on ec2 > connect to host using ssh from local m/c > 
+ Start creating DAG in .py file in UBUNTU folder
